@@ -1,0 +1,59 @@
+$spacers: (
+  0: 0,
+  1: $spacing-xs,
+  2: $spacing-sm,
+  3: $spacing-md,
+  4: $spacing-lg,
+  5: $spacing-xl,
+  6: $spacing-xxl,
+);
+$sides: (
+  '': '',
+  't': '-top',
+  'r': '-right',
+  'b': '-bottom',
+  'l': '-left',
+  'x': '-left' '-right',
+  'y': '-top' '-bottom',
+);
+@each $size, $value in $spacers {
+  @each $side, $properties in $sides {
+    @if $side == 'x' or $side == 'y' {
+      .m#{$side}-#{$size} {
+        @each $property in $properties {
+          margin#{$property}: $value;
+        }
+      }
+    } @else {
+      .m#{$side}-#{$size} {
+        margin#{$properties}: $value;
+      }
+    }
+  }
+}
+@each $size, $value in $spacers {
+  @each $side, $properties in $sides {
+    @if $side == 'x' or $side == 'y' {
+      .p#{$side}-#{$size} {
+        @each $property in $properties {
+          padding#{$property}: $value;
+        }
+      }
+    } @else {
+      .p#{$side}-#{$size} {
+        padding#{$properties}: $value;
+      }
+    }
+  }
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.m-auto {
+  margin: auto;
+}

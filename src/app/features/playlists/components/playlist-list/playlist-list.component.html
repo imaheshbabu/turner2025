@@ -1,0 +1,54 @@
+<div class="playlist-list-container">
+  <header class="playlist-list-header">
+    <h1>Music Playlists</h1>
+    <p class="subtitle">Discover and explore curated music collections</p>
+  </header>
+  <main class="playlist-list-content">
+    @if (loading()) {
+      <div class="loading-container">
+        <app-loading />
+        <p class="loading-text">Loading playlists...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-container">
+        <app-error [message]="error()!" (retry)="onRetry()" />
+      </div>
+    } @else {
+      @if (hasPlaylists()) {
+        <div class="playlist-grid">
+          @for (playlist of playlists(); track playlist.id) {
+            <app-playlist-card
+              [playlist]="playlist"
+              (playlistPlay)="onPlaylistPlay($event)"
+            />
+          }
+        </div>
+
+        @if (totalItems() > pageSize()) {
+          <div class="pagination-container">
+            <mat-paginator
+              [length]="totalItems()"
+              [pageSize]="pageSize()"
+              [pageIndex]="currentPage()"
+              [pageSizeOptions]="pageSizeOptions"
+              [showFirstLastButtons]="true"
+              (page)="onPageChange($event)"
+              aria-label="Select page of playlists"
+            >
+            </mat-paginator>
+          </div>
+        }
+      } @else {
+        <div class="empty-state">
+          <div class="empty-state-content">
+            <h2>No Playlists Available</h2>
+            <p>There are currently no public playlists to display.</p>
+            <button type="button" class="retry-button" (click)="onRetry()">
+              Refresh
+            </button>
+          </div>
+        </div>
+      }
+    }
+  </main>
+</div>

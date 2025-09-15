@@ -1,0 +1,135 @@
+.header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-button {
+  color: inherit;
+  mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
+  }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+  mat-icon {
+    font-size: 1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  &:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+.nav-text {
+  font-weight: 500;
+}
+.active-link {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+  }
+}
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 0.5rem;
+  }
+  .logo-text {
+    font-size: 1.125rem;
+  }
+  .nav-text {
+    display: none;
+  }
+  .nav-link {
+    padding: 0.5rem;
+    min-width: 48px;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .logo-section {
+    gap: 0.25rem;
+  }
+  .logo-text {
+    font-size: 1rem;
+    padding: 0.25rem;
+  }
+  .navigation {
+    gap: 0.25rem;
+  }
+}
+@media (prefers-contrast: high) {
+  .header-toolbar {
+    border-bottom: 1px solid currentColor;
+  }
+  .active-link::after {
+    height: 3px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-text,
+  .nav-link {
+    transition: none;
+  }
+}

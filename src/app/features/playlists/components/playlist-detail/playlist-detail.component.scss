@@ -1,0 +1,233 @@
+.playlist-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.back-button-container {
+  margin-bottom: 1.5rem;
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--mdc-theme-primary, #1976d2);
+
+    mat-icon {
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      background-color: rgba(25, 118, 210, 0.04);
+    }
+  }
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+
+  .not-found-card {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .not-found-content {
+    text-align: center;
+    padding: 2rem;
+
+    .not-found-icon {
+      font-size: 4rem;
+      width: 4rem;
+      height: 4rem;
+      color: var(--mdc-theme-error, #f44336);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin: 1rem 0;
+      color: var(--mdc-theme-on-surface, #000);
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: var(--mdc-theme-on-surface-variant, #666);
+    }
+  }
+}
+
+.playlist-content {
+  .playlist-detail-card {
+    overflow: hidden;
+  }
+
+  .playlist-header {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .playlist-image {
+      flex-shrink: 0;
+
+      .playlist-cover {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        @media (max-width: 768px) {
+          width: 150px;
+          height: 150px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+
+    .playlist-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .playlist-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--mdc-theme-on-surface, #000);
+
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+          text-align: center;
+        }
+      }
+
+      .playlist-creator {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: var(--mdc-theme-on-surface-variant, #666);
+
+        @media (max-width: 768px) {
+          text-align: center;
+        }
+      }
+
+      .playlist-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .stat-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem;
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 6px;
+          font-size: 0.9rem;
+
+          mat-icon {
+            font-size: 1.2rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            color: var(--mdc-theme-primary, #1976d2);
+          }
+
+          span {
+            color: var(--mdc-theme-on-surface, #000);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .playlist-details {
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+
+    .description-section {
+      margin-bottom: 2rem;
+
+      h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--mdc-theme-on-surface, #000);
+      }
+    }
+
+    .playlist-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--mdc-theme-on-surface-variant, #666);
+      margin: 0;
+    }
+
+    .playlist-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      mat-chip {
+        background-color: var(--mdc-theme-primary-container, #e3f2fd);
+        color: var(--mdc-theme-on-primary-container, #0d47a1);
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .playlist-actions {
+    padding: 1rem 2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      justify-content: center;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      mat-icon {
+        font-size: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+}
+
+app-loading,
+app-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}

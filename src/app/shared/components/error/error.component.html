@@ -1,0 +1,22 @@
+<div class="error-container" role="alert" aria-live="assertive">
+  <div class="error-content">
+    <mat-icon class="error-icon" aria-hidden="true">error</mat-icon>
+    <h3 class="error-title">Oops! Something went wrong</h3>
+    <p
+      class="error-message"
+      [attr.aria-describedby]="'error-message-' + errorId"
+    >
+      {{ message || 'An unexpected error occurred. Please try again.' }}
+    </p>
+    <button
+      mat-raised-button
+      color="primary"
+      class="retry-button"
+      (click)="onRetry()"
+      [attr.aria-describedby]="'error-message-' + errorId"
+    >
+      <mat-icon>refresh</mat-icon>
+      Try Again
+    </button>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="playlist-detail-container">
+  <div class="back-button-container">
+    <button mat-button (click)="onBackToList()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Playlists
+    </button>
+  </div>
+  @if (store.loading()) {
+    <app-loading />
+  } @else if (store.error()) {
+    <app-error [message]="store.error()!" (retry)="onRetry()" />
+  } @else if (isPlaylistNotFound) {
+    <div class="not-found-container">
+      <mat-card class="not-found-card">
+        <mat-card-content>
+          <div class="not-found-content">
+            <mat-icon class="not-found-icon">playlist_remove</mat-icon>
+            <h2>Playlist Not Found</h2>
+            <p>
+              The playlist you're looking for doesn't exist or may have been
+              removed.
+            </p>
+            <button mat-raised-button color="primary" (click)="onBackToList()">
+              Browse All Playlists
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  } @else if (store.selectedPlaylist()) {
+    <div class="playlist-content">
+      <mat-card class="playlist-detail-card">
+        <div class="playlist-header">
+          @if (store.selectedPlaylist()!.artwork) {
+            <div class="playlist-image">
+              <img
+                [src]="store.selectedPlaylist()!.artwork"
+                [alt]="store.selectedPlaylist()!.name"
+                class="playlist-cover"
+              />
+            </div>
+          }
+          <div class="playlist-info">
+            <mat-card-header>
+              <mat-card-title class="playlist-title">
+                {{ store.selectedPlaylist()!.name }}
+              </mat-card-title>
+              <mat-card-subtitle class="playlist-creator">
+                Curated by {{ store.selectedPlaylist()!.curator_name }}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <div class="playlist-stats">
+              <div class="stat-item">
+                <mat-icon>library_music</mat-icon>
+                <span>{{ store.selectedPlaylist()!.kind }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card-content class="playlist-details">
+          <div class="description-section">
+            <h3>About</h3>
+            <p class="playlist-description">
+              This is a curated {{ store.selectedPlaylist()!.kind }} from
+              {{ store.selectedPlaylist()!.curator_name }}.
+            </p>
+          </div>
+          <div class="url-section">
+            <h3>Listen on Apple Music</h3>
+            <a
+              [href]="store.selectedPlaylist()!.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              mat-button
+              color="primary"
+            >
+              <mat-icon>open_in_new</mat-icon>
+              Open in Apple Music
+            </a>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="playlist-actions">
+          <button mat-raised-button color="primary">
+            <mat-icon>play_arrow</mat-icon>
+            Play Playlist
+          </button>
+          <button mat-button>
+            <mat-icon>favorite_border</mat-icon>
+            Add to Favorites
+          </button>
+          <button mat-button>
+            <mat-icon>share</mat-icon>
+            Share
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  }
+</div>

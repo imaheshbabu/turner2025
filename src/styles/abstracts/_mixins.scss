@@ -1,0 +1,170 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: $breakpoint-xs) {
+      @content;
+    }
+  }
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+}
+@mixin grid-container($columns: 1, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+@mixin responsive-grid($mobile: 1, $tablet: 2, $desktop: 3, $large: 4) {
+  @include grid-container($mobile);
+  @include respond-to(sm) {
+    grid-template-columns: repeat($tablet, 1fr);
+  }
+  @include respond-to(md) {
+    grid-template-columns: repeat($desktop, 1fr);
+  }
+  @include respond-to(lg) {
+    grid-template-columns: repeat($large, 1fr);
+  }
+}
+@mixin font-size($size, $line-height: 1.5) {
+  font-size: $size;
+  line-height: $line-height;
+}
+@mixin heading($size: $font-size-xl, $weight: $font-weight-bold) {
+  @include font-size($size);
+  font-weight: $weight;
+  margin: 0 0 $spacing-md 0;
+}
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-normal;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+@mixin button-variant($bg-color, $text-color: white) {
+  @include button-base;
+  background-color: $bg-color;
+  color: $text-color;
+  &:hover:not(:disabled) {
+    background-color: darken($bg-color, 10%);
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
+  }
+}
+@mixin card {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $spacing-lg;
+  transition: box-shadow $transition-normal;
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+@mixin card-interactive {
+  @include card;
+  cursor: pointer;
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-md;
+  }
+}
+@mixin loading-spinner($size: 40px, $color: $primary-color) {
+  width: $size;
+  height: $size;
+  border: 3px solid rgba($color, 0.3);
+  border-top: 3px solid $color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="header-content">
+    <div class="logo-section">
+      <button
+        mat-icon-button
+        routerLink="/"
+        class="logo-button"
+        aria-label="Go to home page"
+      >
+        <mat-icon>library_music</mat-icon>
+      </button>
+      <span
+        class="logo-text"
+        routerLink="/"
+        role="button"
+        tabindex="0"
+        (keydown.enter)="navigateHome($event)"
+        (keydown.space)="navigateHome($event)"
+        aria-label="Playlist App - Go to home page"
+      >
+        Playlist App
+      </span>
+    </div>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,108 @@
+.playlist-card {
+  @include card-interactive;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .mat-card-header {
+    padding-bottom: $spacing-sm;
+    .mat-card-title {
+      @include text-clamp(2);
+      font-size: $font-size-large;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacing-xs;
+    }
+    .mat-card-subtitle {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: $font-size-small;
+      margin-bottom: 0;
+    }
+  }
+  .mat-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius-md;
+    margin: $spacing-sm 0;
+  }
+  .mat-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    p {
+      @include text-clamp(3);
+      color: rgba(0, 0, 0, 0.6);
+      font-size: $font-size-small;
+      margin-bottom: $spacing-md;
+      flex: 1;
+    }
+  }
+  .playlist-stats {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-small;
+    color: rgba(0, 0, 0, 0.6);
+    span {
+      @include flex-center;
+      &:first-child::after {
+        content: '•';
+        margin: 0 $spacing-xs;
+        color: rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+  .playlist-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-top: auto;
+    .mat-chip {
+      font-size: 12px;
+      min-height: 24px;
+      padding: 0 $spacing-sm;
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+      border-radius: $border-radius-xl;
+    }
+  }
+  &:hover {
+    .mat-card-image {
+      transform: scale(1.05);
+      transition: transform $transition-normal;
+    }
+  }
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+.playlist-grid {
+  @include responsive-grid(1, 2, 3, 4);
+  gap: $spacing-lg;
+  padding: $spacing-lg 0;
+  @include respond-to(sm) {
+    gap: $spacing-xl;
+  }
+}
+.playlist-empty {
+  @include flex-column-center;
+  padding: $spacing-xxl;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  .mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-lg;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  p {
+    max-width: 400px;
+    margin: 0;
+  }
+}

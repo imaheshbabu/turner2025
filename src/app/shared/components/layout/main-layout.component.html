@@ -1,0 +1,17 @@
+<div class="main-layout">
+  <header class="layout-header">
+    <app-header />
+  </header>
+  <main class="layout-main" role="main">
+    <div class="content-container">
+      <router-outlet />
+    </div>
+  </main>
+  <footer class="layout-footer" role="contentinfo">
+    <div class="footer-content">
+      <p class="footer-text">
+        &copy; {{ currentYear }} Playlist App. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</div>

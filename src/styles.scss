@@ -1,0 +1,44 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/mixins';
+@import 'styles/themes/material-theme';
+@import 'styles/base/reset';
+@import 'styles/base/typography';
+@import 'styles/layout/grid';
+@import 'styles/components/loading';
+@import 'styles/components/playlist-card';
+@import 'styles/utilities/spacing';
+@import 'styles/utilities/display';
+@import 'styles/utilities/accessibility';
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --divider-color: #000000;
+  }
+}

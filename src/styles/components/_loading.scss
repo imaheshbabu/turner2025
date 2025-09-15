@@ -1,0 +1,34 @@
+.loading-container {
+  @include flex-center;
+  padding: $spacing-xl;
+  min-height: 200px;
+}
+.loading-spinner {
+  @include loading-spinner(48px, $primary-color);
+}
+.loading-text {
+  margin-top: $spacing-md;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: $font-size-small;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  @include flex-center;
+  z-index: $z-index-modal;
+  .loading-spinner {
+    @include loading-spinner(64px, $primary-color);
+  }
+}
+.loading-inline {
+  @include flex-center;
+  padding: $spacing-md;
+  .loading-spinner {
+    @include loading-spinner(24px, $primary-color);
+    margin-right: $spacing-sm;
+  }
+}
